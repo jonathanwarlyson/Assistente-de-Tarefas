@@ -14,12 +14,25 @@
         <form id="taskForm">
             <input type="text" id="taskTitle" placeholder="Descrição da tarefa" required>
             <input type="datetime-local" id="taskDueTime" required>
+            <select id="taskCategory">
+                <option value="">Selecione uma categoria</option>
+                <option value="new">+ Criar nova categoria</option>
+            </select>
+
+            <input type="text" id="newCategoryInput" placeholder="Nome da nova categoria" style="display: none;">
+            <button type="button" id="addCategoryBtn" style="display: none;">Adicionar categoria</button>
+
             <button type="submit">Adicionar tarefa</button>
         </form>
         <div id="taskList"></div>
         <div>
             <button onclick="clearTasks()" id="clearTasksBtn" style="background: red; color:white; margin-top: 10px;">
             Limpar Tarefas
+            </button>
+        </div>
+        <div>
+            <button onclick="clearCategories()" id="clearCategoriesBtn" style="background: red; color:white; margin-top: 10px;">
+            Limpar Categorias
             </button>
         </div>
     </div>
