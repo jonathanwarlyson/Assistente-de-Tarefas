@@ -12,9 +12,8 @@ v1.1
     - Limpar categorias*;
         - Categorias que não pertencem a nenhuma tarefa(*).
         
-! Melhorias:
-    - Código mais organizado*;
-        - Refatorar código(*);
+- Melhorias(!):
+    - Código mais organizado;
     - Modularização básica;
 
 - A solucionar
