@@ -5,29 +5,29 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 ------------------------------------------------------------
 
 v1.1
-! Novidades:
+- Novidades(!):
     - Criar categorias;
-        - Adicionar nome
+        - Adicionar nome;
     - Atribuir categorias às tarefas;
     - Limpar categorias*;
-        * Categorias que não pertencem a nenhuma tarefa.
+        - Categorias que não pertencem a nenhuma tarefa(*).
         
 ! Melhorias:
     - Código mais organizado*;
-        * Refatorar código;
+        - Refatorar código(*);
     - Modularização básica;
 
-A solucionar
+- A solucionar
     - Erro ao tentar limpar categorias enquanto tarefa concluída estiver na lista.
     - Ao criar categoria, o sistema reinicia com a categoria criada junto com a tarefa.
 
-A melhorar
+- A melhorar
     - Organizar código(refatorar);
     - Sistema de categorias;
     - Interface;
     - Responsividade.
 
-A implementar
+- A implementar
     - Validação dos dados;
     - Filtros:
         - Filtrar tarefas por categorias;
@@ -47,12 +47,12 @@ v1.0
 - Limpar tarefas
     - Limpa todas as tarefas pendentes e concluídas.
 
-A melhorar:
+- A melhorar:
     - Organização por arquivos separados;
     - Refatoração do código;
     - Modularizar o código;
 
-A implementar:
+- A implementar:
     - Criar categorias;
     - Atribuir categorias às tarefas;
     - Limpar categorias;
