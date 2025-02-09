@@ -4,7 +4,6 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 
 ------------------------------------------------------------
 
-<<<<<<< HEAD
 v1.1 FEAT:Added-Priorities (08-02-2025)
 - Novidades(!):
     - Adicionado feature de prioridades.
@@ -24,16 +23,6 @@ v1.1 (07-02-2025)
     - Limpar categorias*;
         - Categorias que não pertencem a nenhuma tarefa(*).
 
-=======
-v1.1
-- Novidades(!):
-    - Criar categorias;
-        - Adicionar nome;
-    - Atribuir categorias às tarefas;
-    - Limpar categorias*;
-        - Categorias que não pertencem a nenhuma tarefa(*).
-        
->>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
 - Melhorias(!):
     - Código mais organizado;
     - Modularização básica;
@@ -80,8 +69,4 @@ v1.0
     - Validação de dados;
 
 
-<<<<<<< HEAD
     
-=======
-    
->>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b

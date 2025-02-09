@@ -6,27 +6,15 @@ from flask_socketio import SocketIO
 from models import db, Task
 from routes import routes
 
-<<<<<<< HEAD
-=======
-#instancia do flask
->>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
 def create_app():
     app = Flask(__name__)
     CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
     
-<<<<<<< HEAD
-=======
-    # Inicialize a instância do SQLAlchemy com a aplicação Flask
->>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     db.init_app(app)
 
     socketio = SocketIO(app, cors_allowed_origins="*", logger=True, engineio_logger=True)
 
-<<<<<<< HEAD
-=======
-    # Registre blueprints aqui
->>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     app.register_blueprint(routes)
 
     with app.app_context():
