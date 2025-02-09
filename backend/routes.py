@@ -1,5 +1,9 @@
 from flask import Blueprint, request, jsonify
+<<<<<<< HEAD
 from models import db, Task, Category, Priority
+=======
+from models import db, Task, Category
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
 from datetime import datetime
 from flask_cors import CORS
 
@@ -22,12 +26,15 @@ def get_categories():
     categories = Category.query.all()
     return jsonify([{"id": c.id, "name": c.name} for c in categories])
 
+<<<<<<< HEAD
 @routes.route('/priorities', methods=['POST'])
 def get_priorities():
     priorities = Priority.query.all()
     return jsonify([{"id": c.id, "name": c.name}
     for c in priorities])
 
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
 @routes.route('/categories/clear', methods=['DELETE'])
 def clear_categories():
     clean_categories = []
@@ -41,6 +48,7 @@ def clear_categories():
 
 @routes.route('/tasks', methods=['POST'])
 def add_task():
+<<<<<<< HEAD
     data = request.get_json()
     title = data.get('title')
     due_time = data.get('due_time')
@@ -62,6 +70,16 @@ def add_task():
             due_time=datetime.strptime(data['due_time'], '%Y-%m-%d %H:%M'),
             category_id=category_id,
             priority_id=priority.id
+=======
+    data = request.json
+    category_id = data.get("category_id")
+
+    try:
+        new_task = Task(
+            title=data['title'],
+            due_time=datetime.strptime(data['due_time'], '%Y-%m-%d %H:%M'),
+            category_id=category_id
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
         )
         db.session.add(new_task)
         db.session.commit()
@@ -72,6 +90,7 @@ def add_task():
 
 @routes.route('/tasks', methods=['GET'])
 def get_tasks():
+<<<<<<< HEAD
         tasks = Task.query.all() 
         tasks_data = []
         
@@ -87,6 +106,21 @@ def get_tasks():
             tasks_data.append(task_info)
 
         return jsonify(tasks_data)
+=======
+    try:
+        tasks = Task.query.all() 
+        tasks_json = [{
+            "id": task.id,
+            "title": task.title,
+            "due_time": task.due_time.isoformat(),
+            "completed": task.completed,
+            "category": task.category.name if task.category else None
+        } for task in tasks]
+        return jsonify(tasks_json)
+    except Exception as e:
+        print(f"Erro ao buscar tarefas: {e}")
+        return jsonify({"error": "Erro interno ao buscar tarefas."}), 500
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
 
 
 @routes.route('/tasks/<int:id>/complete', methods=['PUT'])

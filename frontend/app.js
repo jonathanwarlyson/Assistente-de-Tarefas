@@ -44,8 +44,11 @@ function renderTasks(tasks) {
             <div>
                 <h3>${task.title}</h3>
                 <p>Prazo: ${new Date(task.due_time).toLocaleString('pt-BR')}</p>
+<<<<<<< HEAD
                 <p>Categoria: ${task.category || 'Sem categoria'}</p>
                 <p>Prioridade: ${task.priority || 'Sem prioridade'}</p>
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
             </div>
             ${!task.completed ?
                 `<button onclick="completeTask(${task.id})">Concluir</button>` :
@@ -81,6 +84,7 @@ window.clearTasks = function() {
 
 window.clearCategories = function() {
     if(!confirm("Tem certeza que deseja apagar todas categorias?")) return;
+<<<<<<< HEAD
 
     fetch('http://localhost:5000/categories/clear', {
         method: 'DELETE'
@@ -90,6 +94,12 @@ window.clearCategories = function() {
         alert(data.message);
         loadCategories();
     })
+=======
+    fetch('http://localhost:5000/categories/clear', {
+        method: 'DELETE'
+    })
+    .then (response => response.json())
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     .catch (error => console.error('Erro ao limpar tarefas: ', error));
 }
 
@@ -101,11 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('taskList');
     const clearTasksBtn = document.getElementById('clearTasksBtn');
     const taskCategory = document.getElementById('taskCategory');
+<<<<<<< HEAD
     const priorityId = document.getElementById('taskPriority').value;
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     const newCategoryInput = document.getElementById('newCategoryInput');
     const addCategoryBtn = document.getElementById('addCategoryBtn');
     const clearCategoriesBtn = document.getElementById('clearCategoriesBtn');
 
+<<<<<<< HEAD
     function loadPriorities() {
         fetch('http://localhost:5000/priorities')
         .then(response => response.json())
@@ -123,6 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error("Erro ao carregar prioridades:", error));
     }
 
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     function loadCategories() {
         fetch('http://localhost:5000/categories')
             .then(response => response.json())
@@ -137,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     taskCategory.appendChild(option);
                 });
             });
+<<<<<<< HEAD
         console.log("Carregando categorias após criação...")
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     }
 
     taskCategory.addEventListener('change', () => {
@@ -194,7 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const title = document.getElementById('taskTitle')?.value;
             const dueTime = document.getElementById('taskDueTime')?.value;
+<<<<<<< HEAD
             const priorityId = document.getElementById('taskPriority').value || null;
+=======
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
             const categoryId = taskCategory.value || null; 
 
             if (!title || !dueTime) {
@@ -208,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({
                     title: title,
                     due_time: dueTime.replace('T', ' '),
+<<<<<<< HEAD
                     category_id: categoryId,
                     priority_id: priorityId
                 })
@@ -223,6 +246,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("Resposta inesperada:", data);
                 }
             }) 
+=======
+                    category_id: categoryId
+                })
+            })
+            .then(response => response.json())
+            .then(tasks => renderTasks(tasks))
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
             .catch(error => console.error('Erro ao adicionar tarefa:', error));
         });
     }
@@ -234,6 +264,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if(clearCategoriesBtn) {
         clearCategoriesBtn.addEventListener('click', clearCategories);
     }
+<<<<<<< HEAD
+=======
+
+    function renderTasks(tasks) {
+        taskList.innerHTML = tasks.map(task => `
+            <div class="task-item ${task.completed ? 'completed' : ''}">
+                <div>
+                    <h3>${task.title}</h3>
+                    <p>Prazo: ${new Date(task.due_time).toLocaleString('pt-BR')}</p>
+                    <p>Categoria: ${task.category || 'Sem categoria'}</p>
+                </div>
+                ${!task.completed ?
+                    `<button onclick="completeTask(${task.id})">Concluir</button>` :
+                    '<span>Concluída</span>'
+                }
+            </div>
+        `).join('');
+    }
+>>>>>>> 0b90993ae2fc6feeda62495586b191e9498d960b
     
     if (taskList) {
         fetch('http://localhost:5000/tasks')
