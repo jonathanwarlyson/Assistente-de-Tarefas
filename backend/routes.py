@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models import db, Task, Category
+from models import db, Task, Category, Priority
 from datetime import datetime
 from flask_cors import CORS
 
@@ -22,6 +22,12 @@ def get_categories():
     categories = Category.query.all()
     return jsonify([{"id": c.id, "name": c.name} for c in categories])
 
+@routes.route('/priorities', methods=['POST'])
+def get_priorities():
+    priorities = Priority.query.all()
+    return jsonify([{"id": c.id, "name": c.name}
+    for c in priorities])
+
 @routes.route('/categories/clear', methods=['DELETE'])
 def clear_categories():
     clean_categories = []
@@ -35,14 +41,27 @@ def clear_categories():
 
 @routes.route('/tasks', methods=['POST'])
 def add_task():
-    data = request.json
-    category_id = data.get("category_id")
+    data = request.get_json()
+    title = data.get('title')
+    due_time = data.get('due_time')
+    category_id = data.get('category_id')
+    priority_level = data.get('priority_id')
+
+    if priority_level not in ['Baixa', 'Média', 'Alta']:
+        return jsonify({"error": "Prioridade inválida"}), 400
+
+    priority = Priority.query.filter_by(id=priority_level).first()
+    if not priority:
+        priority = Priority(level=priority_level)
+        db.session.add(priority)
+        db.session.commit()
 
     try:
         new_task = Task(
-            title=data['title'],
+            title=title,
             due_time=datetime.strptime(data['due_time'], '%Y-%m-%d %H:%M'),
-            category_id=category_id
+            category_id=category_id,
+            priority_id=priority.id
         )
         db.session.add(new_task)
         db.session.commit()
@@ -53,19 +72,21 @@ def add_task():
 
 @routes.route('/tasks', methods=['GET'])
 def get_tasks():
-    try:
         tasks = Task.query.all() 
-        tasks_json = [{
-            "id": task.id,
-            "title": task.title,
-            "due_time": task.due_time.isoformat(),
-            "completed": task.completed,
-            "category": task.category.name if task.category else None
-        } for task in tasks]
-        return jsonify(tasks_json)
-    except Exception as e:
-        print(f"Erro ao buscar tarefas: {e}")
-        return jsonify({"error": "Erro interno ao buscar tarefas."}), 500
+        tasks_data = []
+        
+        for task in tasks:
+            task_info = {
+                "id": task.id,
+                "title": task.title,
+                "due_time": task.due_time.isoformat(),
+                "completed": task.completed,
+                "category": task.category.name if task.category else None,
+                "priority": task.priority.level if task.priority else "Sem prioridade"
+            }   
+            tasks_data.append(task_info)
+
+        return jsonify(tasks_data)
 
 
 @routes.route('/tasks/<int:id>/complete', methods=['PUT'])

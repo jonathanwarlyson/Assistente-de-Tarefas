@@ -4,7 +4,18 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 
 ------------------------------------------------------------
 
-v1.1
+v1.1 FEAT:Added-Priorities (08-02-2025)
+- Novidades(!):
+    - Adicionado feature de prioridades.
+    
+- A melhorar:
+    - Ordenação da lista por ordem de prioridades e data/hora;
+    - Limpar categorias que não estiverem em uma tarefa;
+    - Melhorias de interface.
+
+------------------------------------------------------------
+
+v1.1 (07-02-2025)
 - Novidades(!):
     - Criar categorias;
         - Adicionar nome
