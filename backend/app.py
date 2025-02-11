@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
 from flask_socketio import SocketIO
-from models import db, Task
+from database import db
 from routes import routes
 
 def create_app():

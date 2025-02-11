@@ -1,10 +1,9 @@
 from flask import Blueprint, request, jsonify
-from models import db, Task, Category, Priority
+from models import Task, Category, Priority
+from database import db
 from datetime import datetime
-from flask_cors import CORS
 
 routes = Blueprint('routes', __name__)
-CORS(routes)
 
 @routes.route('/categories', methods=['POST'])
 def add_category():
@@ -21,12 +20,6 @@ def add_category():
 def get_categories():
     categories = Category.query.all()
     return jsonify([{"id": c.id, "name": c.name} for c in categories])
-
-@routes.route('/priorities', methods=['POST'])
-def get_priorities():
-    priorities = Priority.query.all()
-    return jsonify([{"id": c.id, "name": c.name}
-    for c in priorities])
 
 @routes.route('/categories/clear', methods=['DELETE'])
 def clear_categories():
