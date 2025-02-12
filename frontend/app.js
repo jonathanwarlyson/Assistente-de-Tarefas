@@ -87,8 +87,12 @@ window.clearCategories = function() {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);
-        loadCategories();
+        if (data.error) {
+            alert(data.error);
+        } else {
+            alert(data.message);
+            loadCategories();
+        }
     })
     .catch (error => console.error('Erro ao limpar tarefas: ', error));
 }

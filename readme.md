@@ -4,6 +4,10 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 
 ------------------------------------------------------------
 
+v1.1 FIX: error fixed (11-02-2025)
+- Solucionado:
+    - Erro de não limpar nenhuma categoria se estiver alguma tarefa associada. Agora apenas é possível apagar se a categoria não estiver associada a uma tarefa. 
+
 v1.1 REFACTOR: Refatoração básica (10-02-2025)
 - Melhorias(!):
     - Mudanças no código, exclusões de blocos sem sentido, mudanças de arquivos e etc.

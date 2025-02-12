@@ -26,6 +26,8 @@ def clear_categories():
     clean_categories = []
     categories = Category.query.all()
     for category in categories:
+        if category.tasks:
+            return jsonify({"error": f"A categoria {category.name} não pode ser excluída porque está associada a tarefas."}), 400
         if not category.tasks:
             clean_categories.append(category.name)
             db.session.delete(category)
