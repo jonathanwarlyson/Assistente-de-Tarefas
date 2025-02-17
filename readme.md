@@ -4,6 +4,17 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 
 ------------------------------------------------------------
 
+v1.1 STYLE: styles & responsividade (16-02-2025)
+- Melhorias(!):
+    - Agora a nossa interface tem cores, é mais agradável visualmente, mas ainda pode melhorar.
+    - Comecei a tratar a responsividade, ainda não está completamente pronta.
+
+- A implementar:
+    - Validação de dados;
+    - Refatoração do código(limpar);
+    - Editar tarefas criadas;
+    - E outros;
+
 v1.1 FIX: error fixed (11-02-2025)
 - Solucionado:
     - Erro de não limpar nenhuma categoria se estiver alguma tarefa associada. Agora apenas é possível apagar se a categoria não estiver associada a uma tarefa. 

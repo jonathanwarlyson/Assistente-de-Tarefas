@@ -27,3 +27,6 @@ class Task(db.Model):
     category = db.relationship('Category', backref=db.backref('tasks', lazy=True))
     priority_id = db.Column(db.Integer, db.ForeignKey('priorities.id'), nullable=True)
     priority = db.relationship('Priority', back_populates='tasks')
+
+    def __repr__(self):
+        return f'<Task {self.title}, Priority {self.priority.level if self.priority else "None"}'

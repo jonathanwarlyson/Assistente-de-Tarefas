@@ -1,9 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    max-width: 810px;
-    margin: 20px auto;
+    margin: 0;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #DBDCFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
@@ -11,6 +13,18 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 66%;
+}
+
+#taskList {
+    display: grid;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    width: 100%;
+    max-width: 94.5%;
+    margin: 3%;
+    justify-items: center;
 }
 
 #taskForm {
@@ -19,18 +33,21 @@ body {
     margin-bottom: 20px;
 }
 
-input, button {
+input, button, select {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #429ebd;
+    border-radius: 20px;
+    background-color: ghostwhite;
     font-size: 16px;
 }
 
 button {
-    background: #4CAF50;
+    background: #f7ad19;
     color: white;
     border: none;
     cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
 button:hover {
@@ -38,11 +55,14 @@ button:hover {
 }
 
 .task-item {
-    background: #fff;
+    background: #9fe7f5;
     padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: #053f5c;
 }
 
 .completed {
@@ -52,14 +72,14 @@ button:hover {
 
 #notificationContainer {
     position: fixed;
-    top: 45%;
-    left: 41.5%;
+    top: 38%;
+    left: 39.5%;
     transform: translate(-50%, -50%);
     background: #4caf50;
     color: #f0f0f0;
-    padding: 16px;
+    padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     transform: translateY(100%);
@@ -75,4 +95,97 @@ button:hover {
 #notificationText {
     margin: 0;
     font-size: 14px;
+}
+
+label {
+    margin: 20px 0px 20px 0px;
+}
+
+h1 {
+    text-align: center;
+    color: #063f5c;
+}
+
+.priorities {
+    width: 100%;
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    #taskList {
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 30%;
+    }
+
+    #taskForm {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+
+    label {
+        margin: 10px 0 10px 0;
+    }
+
+    input#taskTitle, input#taskDueTime {
+        width: 95%;
+        margin: auto;
+    }
+
+    .priorities {
+        display: flex;
+        width: 100%;
+        margin: auto;
+    }
+
+    select#taskCategory {
+        width: 99%;
+        margin: auto;
+    }
+
+    .task-item {
+        width: 100%;
+    }
+
+    container {
+        height: 100%;
+        margin: 10%;
+    }
+
+    #notificationContainer {
+        width: 50%;
+        left: 50%;
+        top: 35%;
+        margin: auto;
+        display: flex;
+        transform: translate(-50%, -50%);
+        padding: 40px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #taskList {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    input, button, select {
+        font-size: 14px;
+    }
+
+    #notificationContainer {
+        width: 90%;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+    }
 }

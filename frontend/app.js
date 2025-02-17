@@ -32,12 +32,15 @@ function showNotification(message) {
 }
 
 function renderTasks(tasks) {
+    const priorityOrder = { "Alta": 3, "Média": 2, "Baixa": 1};
     const taskList = document.getElementById('taskList');
 
     if (!taskList || !Array.isArray(tasks)) {
         console.error("Tasks não é um array:", tasks);
         return;
     }
+
+    tasks.sort((a, b) => (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0));
 
     taskList.innerHTML = tasks.map(task => `
         <div class="task-item ${task.completed ? 'completed' : ''}">

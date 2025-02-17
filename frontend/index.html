@@ -18,12 +18,14 @@
                 <option value="">Selecione uma categoria</option>
                 <option value="new">+ Criar nova categoria</option>
             </select>
-            <label for="taskPriority">Prioridade:</label>
-            <select id="taskPriority" name="priority">
-                <option value="Baixa">Baixa</option>
-                <option value="Média">Média</option>
-                <option value="Alta">Alta</option>
-            </select>
+            <div class="priorities">
+                <label for="taskPriority">Prioridade:</label>
+                <select id="taskPriority" name="priority">
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+            </div>
 
             <input type="text" id="newCategoryInput" placeholder="Nome da nova categoria" style="display: none;">
             <button type="button" id="addCategoryBtn" style="display: none;">Adicionar categoria</button>
@@ -45,6 +47,6 @@
     <div id="notificationContainer" class="notification-hidden">
         <p id="notificationText"></p>
     </div>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
