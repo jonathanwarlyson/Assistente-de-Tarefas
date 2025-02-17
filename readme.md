@@ -4,7 +4,7 @@ Inicialmente, o começo desse projeto se deu pela necessidade que tenho de me or
 
 ------------------------------------------------------------
 
-v1.1 STYLE: styles & responsividade (16-02-2025)
+v1.1 STYLE: style & responsividade (16-02-2025)
 - Melhorias(!):
     - Agora a nossa interface tem cores, é mais agradável visualmente, mas ainda pode melhorar.
     - Comecei a tratar a responsividade, ainda não está completamente pronta.
